@@ -61,8 +61,8 @@
                                             <td><?php echo ($user->active == 1 ? '<span class="badge badge-pill badge-success mb-1">Sim</span>' : '<span class="badge badge-pill badge-danger mb-1">Não</span>') ?></td>
                                             <td>
                                                 <div class="table-actions text-center">
-                                                    <a data-toggle="tooltip" data-placement="bottom" title="Editar" class="btn btn-icon btn-primary text-white" href="#"><i class="ik ik-edit-2"></i></a>
-                                                    <a data-toggle="tooltip" data-placement="bottom" title="Excluir" class="btn btn-icon btn-danger text-white" href="#"><i class="ik ik-trash-2"></i></a>
+                                                    <a data-toggle="tooltip" data-placement="bottom" title="Editar" class="btn btn-icon btn-primary text-white" href="<?php echo base_url('usuarios/core/'.$user->id); ?>"><i class="ik ik-edit-2"></i></a>
+                                                    <a data-toggle="tooltip" data-placement="bottom" title="Excluir" class="btn btn-icon btn-danger text-white" href="<?php echo base_url('usuarios/del/'.$user->id); ?>"><i class="ik ik-trash-2"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

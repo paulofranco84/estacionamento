@@ -34,15 +34,29 @@
             </div>
 
             <?php
-            /* Utilizado para situações de ações não permitadas */
             if ($message = $this->session->flashdata('error')) :
             ?>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="alert bg-danger alert-danger text-white alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" style="color: black !important">&times;</button>
-                            <span><i class="fas fa-skull-crossbones"></i>&nbsp;&nbsp;<?php echo $message; ?></span>
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <span><i class="ik ik-alert-octagon"></i></i>&nbsp;&nbsp;<?php echo $message; ?></span>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php
+            if ($message = $this->session->flashdata('sucesso')) :
+            ?>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert bg-success alert-success text-white alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <span><i class="fas fa-check-circle"></i>&nbsp;&nbsp;<?php echo $message; ?></span>
                         </div>
                     </div>
                 </div>
@@ -58,7 +72,7 @@
                         <div class="card-body">
 
                             <?php if (isset($usuario)) : ?>
-            
+
                                 <p class="text-muted small mb-4"><i class="ik ik-calendar ik-2x">&nbsp;&nbsp;</i>Última atualização:&nbsp;&nbsp;</i><?php echo formata_data_banco_com_hora($usuario->user_data_alteracao); ?></p>
 
                             <?php endif; ?>
@@ -118,13 +132,13 @@
                                 </div>
 
 
-                                <?php if ($this->ion_auth->is_admin()) : ?>
+                                <?php if ($this->ion_auth->is_admin() || !$this->ion_auth->is_admin()) : ?>
                                     <div class="row mb-3">
 
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="">Perfil</label>
-                                                <select class="form-control" name="perfil_usuario">
+                                                <select class="form-control" name="perfil">
                                                     <?php if (isset($usuario)) : ?>
 
                                                         <option value="2" <?php echo ($perfil_usuario->id == 2 ? 'selected' : ''); ?>>Atendente</option>
@@ -170,7 +184,7 @@
 
 
                                 <button type="submit" class="btn btn-primary mr-2" name="btn_acao" value="<?php echo $valor_btn ?>"><?php echo $valor_btn ?></button>
-                                <?php if ($this->ion_auth->is_admin()) : ?>
+                                <?php if ($this->ion_auth->is_admin() || !$this->ion_auth->is_admin()) : ?>
                                     <a href="<?php echo base_url($this->router->fetch_class()); ?>" class="btn btn-light">Voltar</a>
                                 <?php endif; ?>
                             </form>

@@ -30,6 +30,35 @@
                 </div>
             </div>
 
+            <?php
+            if ($message = $this->session->flashdata('error')) :
+            ?>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert bg-danger alert-danger text-white alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <span><i class="ik ik-alert-octagon"></i></i>&nbsp;&nbsp;<?php echo $message; ?></span>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php
+            if ($message = $this->session->flashdata('sucesso')) :
+            ?>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert bg-success alert-success text-white alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <span><i class="fas fa-check-circle"></i>&nbsp;&nbsp;<?php echo $message; ?></span>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
 
             <div class="row">
                 <div class="col-md-12">
@@ -61,8 +90,8 @@
                                             <td><?php echo ($user->active == 1 ? '<span class="badge badge-pill badge-success mb-1">Sim</span>' : '<span class="badge badge-pill badge-danger mb-1">Não</span>') ?></td>
                                             <td>
                                                 <div class="table-actions text-center">
-                                                    <a data-toggle="tooltip" data-placement="bottom" title="Editar" class="btn btn-icon btn-primary text-white" href="<?php echo base_url('usuarios/core/'.$user->id); ?>"><i class="ik ik-edit-2"></i></a>
-                                                    <a data-toggle="tooltip" data-placement="bottom" title="Excluir" class="btn btn-icon btn-danger text-white" href="<?php echo base_url('usuarios/del/'.$user->id); ?>"><i class="ik ik-trash-2"></i></a>
+                                                    <a data-toggle="tooltip" data-placement="bottom" title="Editar" class="btn btn-icon btn-primary text-white" href="<?php echo base_url('usuarios/core/' . $user->id); ?>"><i class="ik ik-edit-2"></i></a>
+                                                    <a data-toggle="tooltip" data-placement="bottom" title="Excluir" class="btn btn-icon btn-danger text-white" href="<?php echo base_url('usuarios/del/' . $user->id); ?>"><i class="ik ik-trash-2"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

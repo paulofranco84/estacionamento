@@ -33,8 +33,59 @@ class Usuarios extends CI_Controller {
     public function core($usuario_id = null){
 
         if(!$usuario_id){
-            //cadastro
-            exit('Usuário será cadastrado');
+            // if (!$this->ion_auth->is_admin()) {
+            //     $this->session->set_flashdata('info', 'Você não tem permissão para acessar esse menu');
+            //     redirect('home');
+            // }
+
+            $this->form_validation->set_rules('first_name', 'Nome', 'required|alpha|min_length[3]|max_length[50]');
+            $this->form_validation->set_rules('last_name', 'Sobrenome', 'required|alpha|min_length[3]|max_length[50]');
+            $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|min_length[4]|max_length[50]|is_unique[users.email]');
+            $this->form_validation->set_rules('username', 'Nome do usuário', 'required|min_length[5]|max_length[100]|is_unique[users.username]');
+            $this->form_validation->set_rules('password', 'Senha', 'required|min_length[5]|max_length[255]');
+            $this->form_validation->set_rules('confirma_senha', 'Confirmação de senha', 'required|matches[password]');
+
+
+            if ($this->form_validation->run()) {
+
+
+                $username = html_escape($this->input->post('username'));
+                $password = html_escape($this->input->post('password'));
+                $email = html_escape($this->input->post('email'));
+
+
+                $dados_adicionais = array(
+                    'first_name' => $this->input->post('first_name'),
+                    'last_name' => $this->input->post('last_name'),
+                    'active' => $this->input->post('active'), // Não esquecer de comentar a linha 853 do ion_auth_model
+                );
+
+                $group = array($this->input->post('perfil')); //Tem que ser array
+
+                $dados_adicionais = html_escape($dados_adicionais);
+
+                //$dados_adicionais = $this->security->xss_clean($dados_adicionais);
+
+                if ($this->ion_auth->register($username, $password, $email, $dados_adicionais, $group)) {
+
+                    $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso');
+                } else {
+                    $this->session->set_flashdata('error', 'Erro ao salvar os dados');
+                }
+                redirect('usuarios');
+            } else {
+
+                $data = array(
+                    'titulo' => 'Cadastrar usuário',
+                    'sub_titulo' => 'Cadastrando um novo usuário',
+                    'icone' => 'ik ik-user-plus bg-blue',
+                    'valor_btn' => 'Cadastrar',
+                );
+
+                $this->load->view('layout/header', $data);
+                $this->load->view('usuarios/core');
+                $this->load->view('layout/footer');
+            }
         }else{
             //editar
             $usuario = $this->ion_auth->user($usuario_id)->row();
@@ -48,8 +99,8 @@ class Usuarios extends CI_Controller {
 
                 $this->form_validation->set_rules('first_name', 'Nome', 'trim|required|min_length[3]|max_length[20]');
                 $this->form_validation->set_rules('last_name', 'Sobrenome', 'trim|required|min_length[3]|max_length[50]');
-                $this->form_validation->set_rules('username', 'Nome do usuário', 'required|min_length[5]|max_length[100]|callback_check_username');
-                $this->form_validation->set_rules('email', 'e-mail', 'required|valid_email|min_length[4]|max_length[50]|callback_check_email');
+                $this->form_validation->set_rules('username', 'Nome do usuário', 'trim|required|min_length[5]|max_length[100]|callback_check_username');
+                $this->form_validation->set_rules('email', 'e-mail', 'trim|required|valid_email|min_length[4]|max_length[50]|callback_check_email');
                 $this->form_validation->set_rules('password', 'Senha', 'min_length[4]|max_length[254]');
                 $this->form_validation->set_rules('confirma_senha', 'Confirmação de senha', 'matches[password]');
 
@@ -119,11 +170,10 @@ class Usuarios extends CI_Controller {
 
     public function del($usuario_id = NULL) {
 
-        if (!$this->ion_auth->is_admin()) {
-            $this->session->set_flashdata('error', 'Usuário não encontrado');
-            redirect('usuarios');
-        }
-
+        // if (!$this->ion_auth->is_admin()) {
+        //     $this->session->set_flashdata('error', 'Usuário não encontrado');
+        //     redirect('usuarios');
+        // }
 
         if (!$usuario_id || !$this->ion_auth->user($usuario_id)->row()) {
             $this->session->set_flashdata('error', 'Usuário não encontrado');

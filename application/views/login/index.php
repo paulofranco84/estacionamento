@@ -10,18 +10,20 @@
                 <div class="authentication-form mx-auto">
 
                     <?php
-                    /* Utilizado para situações de ações não permitadas */
                     if ($message = $this->session->flashdata('error')) :
                     ?>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="alert bg-danger alert-danger text-white alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" style="color: black !important">&times;</button>
-                                    <span><i class="ik ik-alert-octagon"></i>&nbsp;&nbsp;<?php echo $message; ?></span>
-                                </div>
-                            </div>
-                        </div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function(event) {
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "error",
+                                    title: "<?php echo $message; ?>",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                        </script>
 
                     <?php endif; ?>
 

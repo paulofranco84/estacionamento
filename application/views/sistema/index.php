@@ -30,18 +30,20 @@
             </div>
 
             <?php
-            /* Utilizado para situações de erro */
             if ($message = $this->session->flashdata('error')) :
             ?>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert bg-danger alert-danger text-white alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" style="color: black !important">&times;</button>
-                            <span><i class="fas fa-skull-crossbones"></i>&nbsp;&nbsp;<?php echo $message; ?></span>
-                        </div>
-                    </div>
-                </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function(event) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title: "<?php echo $message; ?>",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
+                </script>
 
             <?php endif; ?>
 
@@ -49,14 +51,17 @@
             if ($message = $this->session->flashdata('sucesso')) :
             ?>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert bg-success alert-success text-white alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <span><i class="fas fa-check-circle"></i>&nbsp;&nbsp;<?php echo $message; ?></span>
-                        </div>
-                    </div>
-                </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function(event) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "<?php echo $message; ?>",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
+                </script>
 
             <?php endif; ?>
 
@@ -184,7 +189,7 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mr-2">Atualizar</button>
-                                <a class="btn btn-info" href="<?php echo base_url('/')?>">Voltar</a>
+                                <a class="btn btn-info" href="<?php echo base_url('/') ?>">Voltar</a>
                             </form>
                         </div>
                     </div>

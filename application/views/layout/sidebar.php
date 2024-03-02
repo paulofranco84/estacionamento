@@ -10,7 +10,7 @@
     <div class="sidebar-content">
         <div class="nav-container">
             <nav id="main-menu-navigation" class="navigation-main">
-                <div class="nav-lavel">Parking</div>
+                <div class="nav-lavel">Estacionamento</div>
                 <div class="nav-item active">
                     <a data-toggle="tooltip" data-placement="bottom" title="Home" href="<?php echo base_url('home'); ?>"><i class="ik ik-home"></i><span>Home</span></a>
                 </div>

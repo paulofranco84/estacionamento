@@ -21,7 +21,6 @@ class Login extends CI_Controller {
         $remember = FALSE;
 
         if ($this->ion_auth->login($email, $senha, $remember)) {
-            $this->session->set_flashdata('sucesso', 'Seja muito bem vindo(a)');
             redirect('home');
         } else {
             $this->session->set_flashdata('error', 'E-mail e/ou senha incorretos');

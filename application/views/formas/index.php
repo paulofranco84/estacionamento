@@ -70,38 +70,32 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-block">
-                            <a data-toggle="tooltip" data-placement="left" title="Cadastrar usuário" class="btn btn-primary float-right" href="<?php echo base_url($this->router->fetch_class() . '/core'); ?>">+&nbsp;Novo</a>
+                            <a data-toggle="tooltip" data-placement="left" title="Cadastrar forma de pagamento" class="btn btn-primary float-right" href="<?php echo base_url($this->router->fetch_class() . '/core'); ?>">+&nbsp;Novo</a>
                         </div>
                         <div class="card-body">
                             <table class="data-table table dataTable no-footer">
                                 <thead>
                                     <tr>
-                                        <th class="pl-25">#</th>
-                                        <th>Usuário</th>
-                                        <th>Email</th>
-                                        <th>Nome</th>
-                                        <th>Perfil</th>
-                                        <th>Ativo</th>
+                                        <th>#</th>
+                                        <th>Nome da forma de pagamento</th>
+                                        <th>Ativa</th>
                                         <th class="nosort text-center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($usuarios as $user) : ?>
+                                    <?php foreach ($formas as $forma) : ?>
                                         <tr>
-                                            <td class="pl-25"><?php echo $user->id ?></td>
-                                            <td><?php echo $user->username ?></td>
-                                            <td><?php echo $user->email ?></td>
-                                            <td><?php echo $user->first_name ?></td>
-                                            <td><?php echo $this->ion_auth->is_admin($user->id) ? 'Administrador' : 'Atendente'; ?></td>
-                                            <td><?php echo ($user->active == 1 ? '<span class="badge badge-pill badge-success mb-1"><i class="fas fa-lock-open"></i>&nbsp;Sim</span>' : '<span class="badge badge-pill badge-danger mb-1"><i class="fas fa-lock"></i>&nbsp;Não</span>') ?></td>
+                                            <td><?php echo $forma->forma_pagamento_id ?></td>
+                                            <td><?php echo $forma->forma_pagamento_nome ?></td>
+                                            <td><?php echo ($forma->forma_pagamento_ativa == 1 ? '<span class="badge badge-pill badge-success mb-1"><i class="fas fa-lock-open"></i>&nbsp;Sim</span>' : '<span class="badge badge-pill badge-danger mb-1"><i class="fas fa-lock"></i>&nbsp;Não</span>') ?></td>
                                             <td>
                                                 <div class="table-actions text-center">
-                                                    <a data-toggle="tooltip" data-placement="bottom" title="Editar" class="btn btn-icon btn-primary text-white" href="<?php echo base_url($this->router->fetch_class() . '/core/' . $user->id); ?>"><i class="ik ik-edit-2"></i></a>
-                                                    <span data-toggle="tooltip" data-placement="bottom" title="Excluir"><button type="button" class="btn btn-icon btn-danger text-white" data-toggle="modal" data-target="#user-<?php echo $user->id; ?>"><i class="ik ik-trash-2"></i></button></span>
+                                                    <a data-toggle="tooltip" data-placement="bottom" title="Editar" class="btn btn-icon btn-primary text-white" href="<?php echo base_url($this->router->fetch_class() . '/core/' . $forma->forma_pagamento_id); ?>"><i class="ik ik-edit-2"></i></a>
+                                                    <span data-toggle="tooltip" data-placement="bottom" title="Excluir"><button type="button" class="btn btn-icon btn-danger text-white" data-toggle="modal" data-target="#forma-<?php echo $forma->forma_pagamento_id; ?>"><i class="ik ik-trash-2"></i></button></span>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <div class="modal fade" id="user-<?php echo $user->id; ?>" tabindex="-1" role="dialog" aria-labelledby="user-<?php echo $user->id; ?>" aria-hidden="true">
+                                        <div class="modal fade" id="forma-<?php echo $forma->forma_pagamento_id; ?>" tabindex="-1" role="dialog" aria-labelledby="forma-<?php echo $forma->forma_pagamento_id; ?>" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -113,7 +107,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button data-toggle="tooltip" data-placement="bottom" title="Cancelar exclusão" type="button" class="btn btn-secondary" data-dismiss="modal">Não, voltar.</button>
-                                                        <a data-toggle="tooltip" data-placement="bottom" title="Excluir" class="btn btn-danger text-white" href="<?php echo base_url($this->router->fetch_class() . '/del/' . $user->id); ?>">Sim, excluir!</a>
+                                                        <a data-toggle="tooltip" data-placement="bottom" title="Excluir" class="btn btn-danger text-white" href="<?php echo base_url($this->router->fetch_class() . '/del/' . $forma->forma_pagamento_id); ?>">Sim, excluir!</a>
                                                     </div>
                                                 </div>
                                             </div>

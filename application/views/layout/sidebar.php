@@ -35,10 +35,10 @@
                         <a data-toggle="tooltip" data-placement="bottom" title="Gerenciar configurações do sistema" href="<?php echo base_url('sistema'); ?>"><i class="ik ik-settings"></i><span>Sistema</span></a>
                     </div>
                     <div class="nav-item">
-                        <a data-toggle="tooltip" data-placement="bottom" title="Gerenciar preços e categorias" href="<?php echo base_url('precificacoes'); ?>"><i class="fas fa-file-invoice-dollar"></i><span>Precificação</span></a>
+                        <a data-toggle="tooltip" data-placement="bottom" title="Gerenciar preços e categorias" href="<?php echo base_url('precificacoes'); ?>"><i class="fas fa-dollar-sign"></i><span>Precificação</span></a>
                     </div>
                     <div class="nav-item">
-                        <a data-toggle="tooltip" data-placement="bottom" title="Gerenciar formas de pagamento" href="<?php echo base_url('pagamentos'); ?>"><i class="fas fa-money-bill-alt"></i><span>Forma de pagamento</span></a>
+                        <a data-toggle="tooltip" data-placement="bottom" title="Gerenciar formas de pagamento" href="<?php echo base_url('formas'); ?>"><i class="fas fa-money-bill-alt"></i><span>Forma de pagamento</span></a>
                     </div>
 
                 <?php endif; ?>

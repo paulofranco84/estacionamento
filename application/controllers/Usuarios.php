@@ -118,6 +118,8 @@ class Usuarios extends CI_Controller {
 
                     $data = elements(array('first_name','last_name','email','username','password','active'), $this->input->post());
 
+                    $data = html_escape($data);
+
                     // if (!$this->ion_auth->is_admin()) {
                     //     unset($data['active']);
                     // }

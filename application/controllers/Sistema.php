@@ -78,7 +78,7 @@ class Sistema extends CI_Controller
                 $this->input->post()
             );
 
-            //$data = $this->security->xss_clean($data);
+            $data = html_escape($data);
 
 
             $this->core_model->update('sistema', $data, array('sistema_id' => 1));

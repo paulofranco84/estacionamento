@@ -1,6 +1,6 @@
 <div class="app-sidebar colored">
     <div class="sidebar-header">
-        <a class="header-brand" href="index.html">
+        <a class="header-brand" href="/">
             <span class="text">Park Now</span>
         </a>
         <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
@@ -38,7 +38,7 @@
                         <a data-toggle="tooltip" data-placement="bottom" title="Gerenciar preços e categorias" href="<?php echo base_url('precificacoes'); ?>"><i class="fas fa-dollar-sign"></i><span>Precificação</span></a>
                     </div>
                     <div class="nav-item">
-                        <a data-toggle="tooltip" data-placement="bottom" title="Gerenciar formas de pagamento" href="<?php echo base_url('formas'); ?>"><i class="fas fa-money-bill-alt"></i><span>Forma de pagamento</span></a>
+                        <a data-toggle="tooltip" data-placement="bottom" title="Gerenciar formas de pagamento" href="<?php echo base_url('formas'); ?>"><i class="fas fa-credit-card"></i><span>Forma de pagamento</span></a>
                     </div>
 
                 <?php endif; ?>

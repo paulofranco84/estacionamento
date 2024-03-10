@@ -25,7 +25,7 @@ class Formas extends CI_Controller {
         $data = array(
             'titulo' => 'Formas de pagamento',
             'sub_titulo' => 'Listando as formas de pagamento cadastradas',
-            'icone' => 'fas fa-money-bill-alt bg-blue',
+            'icone' => 'fas fas fa-credit-card bg-blue',
             'formas' => $this->core_model->get_all('formas_pagamentos'),
         );
 
@@ -61,7 +61,7 @@ class Formas extends CI_Controller {
                 $data = array(
                     'titulo' => 'Cadastrar forma de pagamento',
                     'sub_titulo' => 'Cadastrando uma nova forma de pagamento',
-                    'icone' => 'fas fa-money-bill-alt bg-blue',
+                    'icone' => 'fas fas fa-credit-card bg-blue',
                     'valor_btn' => 'Cadastrar',
                 );
 
@@ -102,7 +102,7 @@ class Formas extends CI_Controller {
                     $data = array(
                         'titulo' => 'Formas de pagamento',
                         'sub_titulo' => 'Editando a forma de pagamento',
-                        'icone' => 'fas fa-money-bill-alt bg-blue',
+                        'icone' => 'fas fas fa-credit-card bg-blue',
                         'valor_btn' => 'Atualizar',
                         'forma' => $this->core_model->get_by_id('formas_pagamentos', array('forma_pagamento_id' => $forma_pagamento_id)),
                     );

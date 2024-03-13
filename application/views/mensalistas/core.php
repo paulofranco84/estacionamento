@@ -183,6 +183,13 @@
                                 </div>
 
                                 <div class="row">
+                                
+                                    <div class="col-md-3 mb-3">
+                                        <div class="form-group">
+                                            <label for="">Complemento</label>
+                                            <input type="text" class="form-control" name="mensalista_complemento" value="<?php echo (isset($mensalista) ? $mensalista->mensalista_complemento : set_value('mensalista_complemento')) ?>">
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-3 mb-3">
                                         <div class="form-group">
@@ -208,17 +215,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 mb-3">
-                                        <div class="form-group">
-                                            <label for="">Complemento</label>
-                                            <input type="text" class="form-control" name="mensalista_complemento" value="<?php echo (isset($mensalista) ? $mensalista->mensalista_complemento : set_value('mensalista_complemento')) ?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-
-                                    <div class="col-md-3">
+                                    <div class="col-md-1">
                                         <div class="form-group">
                                             <label for="">Ativo</label>
                                             <select class="form-control" name="mensalista_ativo">
@@ -237,7 +234,11 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                </div>
+
+                                <div class="row mb-3">
+
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="">Dia vencimento mensalidade</label>
                                             <input type="text" class="form-control dia_vencimento" name="mensalista_dia_vencimento" value="<?php echo (isset($mensalista) ? $mensalista->mensalista_dia_vencimento : set_value('mensalista_dia_vencimento')) ?>">
@@ -245,7 +246,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-10">
                                         <div class="form-group">
                                             <label for="">Observações</label>
 

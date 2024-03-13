@@ -127,7 +127,7 @@ class Mensalistas extends CI_Controller
                 $this->form_validation->set_rules('mensalista_sobrenome', 'Sobrenome', 'required|min_length[4]|max_length[145]');
                 $this->form_validation->set_rules('mensalista_data_nascimento', 'Data Nascimento', 'required');
                 $this->form_validation->set_rules('mensalista_cpf', 'CPF', 'required|callback_check_documento_valido');
-                $this->form_validation->set_rules('mensalista_rg', 'RG', 'required|callback_check_rg_ie');
+                $this->form_validation->set_rules('mensalista_rg', 'RG', 'required|callback_check_rg');
                 $this->form_validation->set_rules('mensalista_email', 'E-Mail', 'required|valid_email|callback_check_email');
                 /* Trecho que verifica no banco apenas se foi inputado alguma coisa nos campos correspondentes */
                 /* Tem que ser assim, pois o campo não é obrigatório. */
@@ -227,11 +227,17 @@ class Mensalistas extends CI_Controller
 
             $this->session->set_flashdata('error', 'Mensalista não encontrado');
             redirect($this->router->fetch_class());
-        } else {
+        }
 
-            $this->core_model->delete('mensalistas', array('mensalista_id' => $mensalista_id));
+        if ($this->core_model->get_by_id('mensalistas', array('mensalista_id' => $mensalista_id, 'mensalista_ativo' => 1 ))) {
+
+            $this->session->set_flashdata('error', 'Não é possível excluir um mensalista ativo');
             redirect($this->router->fetch_class());
         }
+
+        $this->core_model->delete('mensalistas', array('mensalista_id' => $mensalista_id));
+        redirect($this->router->fetch_class());
+        
     }
 
     public function check_documento_valido($mensalista_cpf)
@@ -318,14 +324,14 @@ class Mensalistas extends CI_Controller
         }
     }
 
-    public function check_rg_ie($mensalista_rg)
+    public function check_rg($mensalista_rg)
     {
 
         $mensalista_id = $this->input->post('mensalista_id');
 
         if ($this->core_model->get_by_id('mensalistas', array('mensalista_rg' => $mensalista_rg, 'mensalista_id !=' => $mensalista_id))) {
 
-            $this->form_validation->set_message('check_rg_ie', 'Essa informação já existe');
+            $this->form_validation->set_message('check_rg', 'Essa informação já existe');
 
             return FALSE;
         } else {

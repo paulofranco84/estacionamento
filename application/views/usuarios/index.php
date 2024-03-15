@@ -30,42 +30,6 @@
                 </div>
             </div>
 
-            <?php
-            if ($message = $this->session->flashdata('error')) :
-            ?>
-
-                <script>
-                    document.addEventListener("DOMContentLoaded", function(event) {
-                        Swal.fire({
-                            position: "center",
-                            icon: "error",
-                            title: "<?php echo $message; ?>",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    });
-                </script>
-
-            <?php endif; ?>
-
-            <?php
-            if ($message = $this->session->flashdata('sucesso')) :
-            ?>
-
-                <script>
-                    document.addEventListener("DOMContentLoaded", function(event) {
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "<?php echo $message; ?>",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    });
-                </script>
-
-            <?php endif; ?>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">

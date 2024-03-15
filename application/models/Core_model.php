@@ -1,6 +1,5 @@
 <?php
-
-defined('BASEPATH') OR exit('Ação não permitida');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Core_model extends CI_Model{
 

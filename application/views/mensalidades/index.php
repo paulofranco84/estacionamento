@@ -41,11 +41,11 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th class="all">Nome</th>
-                                        <th class="all">CPF</th>
-                                        <th class="">Categoria</th>
-                                        <th class="">Valor</th>
-                                        <th class="">Data vencimento</th>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>Categoria</th>
+                                        <th>Valor</th>
+                                        <th>Data vencimento</th>
                                         <th class="">Data pagamento</th>
                                         <th class="all text-center">Status</th>
                                         <th class="all no-sort text-right">Ações</th>
@@ -55,10 +55,10 @@
                                     <?php foreach ($mensalidades as $mensalidade) : ?>
                                         <tr>
                                             <td><?php echo $mensalidade->mensalidade_id ?></td>
-                                            <td><?php echo $mensalidade->mensalista_nome; ?></td>
+                                            <td><a data-toggle="tooltip" data-placement="bottom" title="Visualizar mensalista" class="btn btn-sm btn-link" href="<?php echo base_url('mensalistas/core/' . $mensalidade->mensalista_id); ?>"><i class="ik ik-eye"></i><?php echo $mensalidade->mensalista_nome; ?></a></td>
                                             <td><?php echo $mensalidade->mensalista_cpf; ?></td>
                                             <td><?php echo $mensalidade->mensalista_categoria; ?></td>
-                                            <td><?php echo 'R$&nbsp;'.$mensalidade->mensalista_valor_mensalidade; ?></td>
+                                            <td><?php echo 'R$&nbsp;' . $mensalidade->mensalista_valor_mensalidade; ?></td>
                                             <td><?php echo formata_data_banco_sem_hora($mensalidade->mensalidade_data_vencimento); ?></td>
                                             <td><?php echo ($mensalidade->mensalidade_status == 1 ? formata_data_banco_com_hora($mensalidade->mensalidade_data_pagamento) : 'Em Aberto'); ?></td>
 

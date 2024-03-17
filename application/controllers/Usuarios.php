@@ -16,7 +16,7 @@ class Usuarios extends CI_Controller {
 	public function index(){
 
         $data = array (
-            'titulo'        => 'Usuários cadastrados',
+            'titulo'        => 'Usuários',
             'sub_titulo'    => 'Listando os usuários cadastrados',
             'icone'         =>  'ik ik-users bg-blue',
             'usuarios'      => $this->ion_auth->users()->result(),

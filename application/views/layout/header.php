@@ -29,9 +29,6 @@
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
 
     <div class="wrapper">
 
@@ -45,8 +42,9 @@
                             position: "center",
                             icon: "error",
                             title: "<?php echo $message; ?>",
-                            showConfirmButton: false,
-                            timer: 1500
+                            showConfirmButton: true,
+                            confirmButtonColor: '#0275d8',
+                            //timer: 2000
                         });
                     });
                 </script>
@@ -64,7 +62,7 @@
                             icon: "success",
                             title: "<?php echo $message; ?>",
                             showConfirmButton: false,
-                            timer: 1500
+                            timer: 2000
                         });
                     });
                 </script>

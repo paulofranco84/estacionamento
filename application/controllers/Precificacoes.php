@@ -21,7 +21,7 @@ class Precificacoes extends CI_Controller
     {
 
         $data = array(
-            'titulo'        => 'Precificações cadastradas',
+            'titulo'        => 'Precificações',
             'sub_titulo'    => 'Listando as precificações cadastradas',
             'icone'         =>  'fas fa-dollar-sign bg-blue',
             'usuarios'      => $this->ion_auth->users()->result(),
@@ -116,6 +116,18 @@ class Precificacoes extends CI_Controller
                             if ($this->core_model->get_by_id('estacionar', array('estacionar_precificacao_id' => $precificacao_id, 'estacionar_status' => 0))) {
 
                                 $this->session->set_flashdata('error', 'Existem veículos estacionados com esta categoria');
+                                redirect($this->router->fetch_class());
+                            }
+                        }
+                    }
+
+                    if ($precificacao_ativa == 0) {
+
+                        if ($this->db->table_exists('mensalidades')) {
+
+                            if ($this->core_model->get_by_id('mensalidades', array('mensalidade_precificacao_id' => $precificacao_id, 'mensalidade_status' => 0))) {
+
+                                $this->session->set_flashdata('error', 'Existem mensalidades em aberto cadastradas com esta categoria');
                                 redirect($this->router->fetch_class());
                             }
                         }

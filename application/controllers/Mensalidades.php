@@ -24,7 +24,7 @@ class Mensalidades extends CI_Controller {
         }
 
         $data = array(
-            'titulo' => 'Mensalidades cadastradas',
+            'titulo' => 'Mensalidades',
             'sub_titulo' => 'Listando todas as mensalidades cadastradas',
             'icone' => 'fas fa-hand-holding-usd bg-blue',
             'styles' => array(
@@ -86,7 +86,7 @@ class Mensalidades extends CI_Controller {
 
                 $data = array(
                     'titulo' => 'Cadastrar mensalidade',
-                    'sub_titulo' => 'Cadastrando nova mensalidade',
+                    'sub_titulo' => 'Cadastrando uma nova mensalidade',
                     'icone' => 'fas fa-hand-holding-usd bg-blue',
                     'texto_modal' => 'Tem certeza que deseja salvar a mensalidade? </br></br>Depois de salva, só será possível alterar a "Categoria" e a "Situação"',
                     'styles' => array(
@@ -96,7 +96,7 @@ class Mensalidades extends CI_Controller {
                         'js/Mask/jquery.mask.min.js',
                         'js/Mask/custom.js',
                         'plugins/select2/dist/js/select2.min.js',
-                        'js/Mensalidades/custom.js',
+                        'js/mensalidades.js',
                     ),
                     'valor_btn' => 'Cadastrar',
                     'precificacoes' => $this->core_model->get_all('precificacoes'), //Traz todas a precificações (ativas ou não) para carregar no dropdown e não der erro quando alguma for desativada
@@ -160,7 +160,7 @@ class Mensalidades extends CI_Controller {
                             'js/Mask/jquery.mask.min.js',
                             'js/Mask/custom.js',
                             'plugins/select2/dist/js/select2.min.js',
-                            'js/Mensalidades/custom.js',
+                            'js/mensalidades.js',
                         ),
                         'valor_btn' => 'Atualizar',
                         'precificacoes' => $this->core_model->get_all('precificacoes'), //Traz todas a precificações (ativas ou não) para carregar no dropdown e não der erro quando alguma for desativada

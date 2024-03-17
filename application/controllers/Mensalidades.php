@@ -12,8 +12,6 @@ class Mensalidades extends CI_Controller {
 
         $this->load->model('mensalidades_model');
         $this->load->model('core_model');
-
-        date_default_timezone_set('America/Sao_Paulo');
     }
 
     public function index() {
@@ -119,7 +117,7 @@ class Mensalidades extends CI_Controller {
             } else {
 
 
-                $this->form_validation->set_rules('mensalidade_precificacao_id', 'Precificação', 'required');
+                $this->form_validation->set_rules('mensalidade_precificacao_id', 'Categoria', 'required');
 
 
                 if ($this->form_validation->run()) {
@@ -235,7 +233,7 @@ class Mensalidades extends CI_Controller {
         $mensalidade_data_vencimento = strtotime($mensalidade_data_vencimento);
 
         /* Se a data de vencimento for menor que a data atual */
-        if ($data_atual >= $mensalidade_data_vencimento) {
+        if ($data_atual > $mensalidade_data_vencimento) {
             $this->form_validation->set_message('check_data_valida', 'A data de vencimento deve ser corrente ou futura');
             return FALSE;
         } else {
@@ -252,7 +250,7 @@ class Mensalidades extends CI_Controller {
         }
 
         if ($this->core_model->get_by_id('mensalidades', array('mensalidade_id' => $mensalidade_id, 'mensalidade_status' => 0))) {
-            $this->session->set_flashdata('error', 'Não é possível excluir uma mensalidade que ainda não foi paga');
+            $this->session->set_flashdata('error', 'Não é possível excluir uma mensalidade em aberto');
             redirect($this->router->fetch_class());
         }
 

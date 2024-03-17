@@ -9,8 +9,6 @@ class Usuarios extends CI_Controller {
         if (!$this->ion_auth->logged_in()) {
             redirect('login');
         }
-
-        date_default_timezone_set('America/Sao_Paulo');
     }
 
 	public function index(){

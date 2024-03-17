@@ -13,8 +13,6 @@ class Precificacoes extends CI_Controller
         }
 
         $this->load->model('core_model');
-
-        date_default_timezone_set('America/Sao_Paulo');
     }
 
     public function index()

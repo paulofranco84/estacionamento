@@ -43,14 +43,15 @@ class Estacionar_model extends CI_Model {
 
         if ($precificacao_id) {
 
-            $this->db->select('precificacao_categoria');
+            $this->db->select('precificacao_categoria, precificacao_ativa');
             $this->db->select('SUM(precificacao_numero_vagas) as vagas');
 
             $this->db->where('precificacao_id', $precificacao_id);
-            $this->db->group_by('precificacao_categoria');
+            $this->db->group_by('precificacao_categoria, precificacao_ativa');
             return $this->db->get('precificacoes')->row();
         } else {
             return FALSE;
         }
+
     }
 }

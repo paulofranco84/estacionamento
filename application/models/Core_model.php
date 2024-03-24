@@ -37,12 +37,14 @@ class Core_model extends CI_Model{
 
             $this->db->insert($table, $data);
 
+            $last_id = $this->db->insert_id();
+
             /* Armazenando na sessão o último ID inserido */
             if ($get_last_id) {
-                $this->session->set_userdata('last_id', $this->db->insert_id());
+                $this->session->set_userdata('last_id', $last_id);
             }
 
-            if ($this->db->affected_rows() > 0) {
+            if ($last_id > 0) {
 
                 $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso!');
             } else {

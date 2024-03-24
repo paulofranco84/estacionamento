@@ -39,7 +39,7 @@
                         <div class="card-body">
                             <div class="container-fluid">
                                 <div class="table-responsive">
-                                    <table class="datatable table table-borderless nowrap table-sm display dt-responsive nowrap compact py-3" style="width:100%">
+                                    <table class="data-table table dataTabe nowrap table-sm display dt-responsive nowrap compact py-3" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -106,4 +106,289 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row clearfix">
+
+                <div class="col-md-12">
+
+                    <div class="card">
+
+                        <div class="card-header d-block text-center">
+                            <h5 class="text-uppercase h6">Situação das vagas</h5>
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="row">
+
+
+                                <div class="col-md-3 mb-35 py-1">
+                                    <p class="text-center text-uppercase small">Veículo Pequeno<?php echo ($numero_vagas_pequeno->precificacao_ativa == 0 ? '&nbsp;<b><span class="text-danger"><i class="fas fa-ban"></i>&nbsp;Desativada</span></b>' : ''); ?></p>
+                                    <div class="widget-body text-center">
+                                        <div class="content">
+                                            <i class="fas fa-car-side fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="">
+
+                                        <ul class="list-inline mt-15 text-center">
+
+                                            <?php $ocupadas = array(); ?>
+
+                                            <?php foreach ($vagas_ocupadas_pequeno as $vaga) : ?>
+
+                                                <?php $ocupadas[] = $vaga->estacionar_numero_vaga; ?>
+                                                <?php $ocupadas[$vaga->estacionar_numero_vaga] = $vaga->estacionar_placa_veiculo; ?>
+
+                                            <?php endforeach; ?>
+
+
+                                            <?php for ($i = 1; $i <= $numero_vagas_pequeno->vagas; $i++) : ?>
+
+                                                <?php if (in_array($i, $ocupadas)) : ?>
+
+                                                    <li class="list-inline-item">
+                                                        <div class="widget social-widget bg-warning vaga">
+                                                            <div class="widget-body">
+                                                                <div class="content" data-toggle="tooltip" data-placement="top" title="" data-original-title="Placa&nbsp;<?php echo $ocupadas[$i] ?>" title="Ocupada">
+
+                                                                    <i class="fas fa-car-side fa-lg"></i>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+
+                                                <?php else : ?>
+
+                                                    <li class="list-inline-item">
+                                                        <div class="widget social-widget <?php echo ($numero_vagas_pequeno->precificacao_ativa == 1 ? 'bg-success' : 'bg-secondary')  ?> vaga">
+                                                            <div class="widget-body">
+                                                                <div class="content" title="Vaga livre">
+
+                                                                    <div title="" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo ($numero_vagas_pequeno->precificacao_ativa == 1 ? 'Vaga livre' : 'Desativada')  ?>" class="text">
+                                                                        <?php echo ($numero_vagas_pequeno->precificacao_ativa == 1 ? $i : '<i class="fas fa-ban"></i>')  ?>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+
+                                                <?php endif ?>
+
+                                            <?php endfor; ?>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3 mb-35 py-1">
+                                    <p class="text-center text-uppercase small">Veículo Médio<?php echo ($numero_vagas_medio->precificacao_ativa == 0 ? '&nbsp;<b><span class="text-danger"><i class="fas fa-ban"></i>&nbsp;Desativada</span></b>' : ''); ?></p>
+                                    <div class="widget-body text-center">
+                                        <div class="content">
+                                            <i class="fas fa-truck-monster fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="">
+
+                                        <ul class="list-inline mt-15 text-center">
+
+                                            <?php $ocupadas = array(); ?>
+
+                                            <?php foreach ($vagas_ocupadas_medio as $vaga) : ?>
+
+                                                <?php $ocupadas[] = $vaga->estacionar_numero_vaga; ?>
+                                                <?php $ocupadas[$vaga->estacionar_numero_vaga] = $vaga->estacionar_placa_veiculo; ?>
+
+                                            <?php endforeach; ?>
+
+
+                                            <?php for ($i = 1; $i <= $numero_vagas_medio->vagas; $i++) : ?>
+
+                                                <?php if (in_array($i, $ocupadas)) : ?>
+
+                                                    <li class="list-inline-item">
+
+                                                        <div class="widget social-widget bg-warning vaga">
+                                                            <div class="widget-body">
+                                                                <div class="content" data-toggle="tooltip" data-placement="top" title="" data-original-title="Placa&nbsp;<?php echo $ocupadas[$i] ?>" title="Ocupada">
+
+                                                                    <i class="fas fa-truck-monster fa-lg"></i>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+
+                                                <?php else : ?>
+
+                                                    <li class="list-inline-item">
+                                                        <div class="widget social-widget <?php echo ($numero_vagas_medio->precificacao_ativa == 1 ? 'bg-success' : 'bg-secondary')  ?> vaga">
+                                                            <div class="widget-body">
+                                                                <div class="content" title="Vaga livre">
+
+                                                                    <div title="" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo ($numero_vagas_medio->precificacao_ativa == 1 ? 'Vaga livre' : 'Desativada')  ?>" class="text">
+                                                                        <?php echo ($numero_vagas_medio->precificacao_ativa == 1 ? $i : '<i class="fas fa-ban"></i>')  ?>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+
+                                                <?php endif ?>
+
+                                            <?php endfor; ?>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3 mb-35 py-1">
+                                    <p class="text-center text-uppercase small">Veículo Grande<?php echo ($numero_vagas_grande->precificacao_ativa == 0 ? '&nbsp;<b><span class="text-danger"><i class="fas fa-ban"></i>&nbsp;Desativada</span></b>' : ''); ?></p>
+                                    <div class="widget-body text-center">
+                                        <div class="content">
+                                            <i class="fas fa-truck fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="">
+
+                                        <ul class="list-inline mt-15 text-center">
+
+                                            <?php $ocupadas = array(); ?>
+
+                                            <?php foreach ($vagas_ocupadas_grande as $vaga) : ?>
+
+                                                <?php $ocupadas[] = $vaga->estacionar_numero_vaga; ?>
+                                                <?php $ocupadas[$vaga->estacionar_numero_vaga] = $vaga->estacionar_placa_veiculo; ?>
+
+                                            <?php endforeach; ?>
+
+
+                                            <?php for ($i = 1; $i <= $numero_vagas_grande->vagas; $i++) : ?>
+
+                                                <?php if (in_array($i, $ocupadas)) : ?>
+
+                                                    <li class="list-inline-item">
+                                                        <div class="widget social-widget bg-warning vaga">
+                                                            <div class="widget-body">
+                                                                <div class="content" data-toggle="tooltip" data-placement="top" title="" data-original-title="Placa&nbsp;<?php echo $ocupadas[$i] ?>" title="Ocupada">
+
+                                                                    <i class="fas fa-truck fa-lg"></i>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+
+                                                <?php else : ?>
+
+                                                    <li class="list-inline-item">
+                                                        <div class="widget social-widget <?php echo ($numero_vagas_grande->precificacao_ativa == 1 ? 'bg-success' : 'bg-secondary')  ?> vaga">
+                                                            <div class="widget-body">
+                                                                <div class="content" title="Vaga livre">
+
+                                                                    <div title="" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo ($numero_vagas_grande->precificacao_ativa == 1 ? 'Vaga livre' : 'Desativada')  ?>" class="text">
+                                                                        <?php echo ($numero_vagas_grande->precificacao_ativa == 1 ? $i : '<i class="fas fa-ban"></i>')  ?>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+
+                                                <?php endif ?>
+
+                                            <?php endfor; ?>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3 mb-35 py-1">
+                                    <p class="text-center text-uppercase small">Veículo Moto<?php echo ($numero_vagas_moto->precificacao_ativa == 0 ? '&nbsp;<b><span class="text-danger"><i class="fas fa-ban"></i>&nbsp;Desativada</span></b>' : ''); ?></p>
+                                    <div class="widget-body text-center">
+                                        <div class="content">
+                                            <i class="fas fa-motorcycle fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="">
+
+                                        <ul class="list-inline mt-15 text-center">
+
+                                            <?php $ocupadas = array(); ?>
+
+                                            <?php foreach ($vagas_ocupadas_moto as $vaga) : ?>
+
+                                                <?php $ocupadas[] = $vaga->estacionar_numero_vaga; ?>
+                                                <?php $ocupadas[$vaga->estacionar_numero_vaga] = $vaga->estacionar_placa_veiculo; ?>
+
+
+                                            <?php endforeach; ?>
+
+                                            <?php
+                                            //echo '<pre>';
+                                            //print_r($ocupadas);
+                                            ?>
+
+
+                                            <?php for ($i = 1; $i <= $numero_vagas_moto->vagas; $i++) : ?>
+
+                                                <?php if (in_array($i, $ocupadas)) : ?>
+
+                                                    <li class="list-inline-item">
+                                                        <div class="widget social-widget bg-warning vaga">
+                                                            <div class="widget-body">
+                                                                <div class="content" data-toggle="tooltip" data-placement="top" title="" data-original-title="Placa&nbsp;<?php echo $ocupadas[$i] ?>" title="Ocupada">
+
+                                                                    <i class="fas fa-motorcycle fa-lg"></i>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+
+                                                <?php else : ?>
+
+                                                    <li class="list-inline-item">
+                                                        <div class="widget social-widget <?php echo ($numero_vagas_moto->precificacao_ativa == 1 ? 'bg-success' : 'bg-secondary')  ?> vaga">
+                                                            <div class="widget-body">
+                                                                <div class="content" title="Vaga livre">
+
+                                                                    <div title="" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo ($numero_vagas_moto->precificacao_ativa == 1 ? 'Vaga livre' : 'Desativada')  ?>" class="text">
+                                                                        <?php echo ($numero_vagas_moto->precificacao_ativa == 1 ? $i : '<i class="fas fa-ban"></i>')  ?>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                <?php endif ?>
+
+                                            <?php endfor; ?>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>

@@ -1,0 +1,1 @@
+Sistema de estacionamento desenvolvido em PHP 7.4 com o framework Codeignitter 3, utilizando servidor web IIS e banco de dados Microsoft SQL Server.
